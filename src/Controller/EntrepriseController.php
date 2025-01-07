@@ -17,7 +17,17 @@ class EntrepriseController extends AbstractController
         
         $entreprises = $entrepriseRepository->findBy([], ["raisonSociale" => "ASC"]);
         return $this->render('entreprise/index.html.twig', [
-            'entreprises' => $entreprises
+            'entreprises' => $entreprises,
+            'description' => 'Liste des entreprises'
+        ]);
+    }
+    
+    #[Route('/entreprise/{id}', name: 'show_entreprise')]
+    public function show(Entreprise $entreprise): Response
+    {
+        return $this->render('entreprise/show.html.twig', [
+            'entreprise' => $entreprise,
+            'description' => 'Détail de l’entreprise : '.$entreprise
         ]);
     }
 }
