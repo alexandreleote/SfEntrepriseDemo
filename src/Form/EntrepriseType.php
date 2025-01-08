@@ -8,19 +8,38 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class EntrepriseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('raisonSociale', TextType::class)
+            ->add('raisonSociale', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'],
+            ])
             ->add('dateCreation', DateType::class, [
                 'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control'],
             ])
-            ->add('adresse', TextType::class)
-            ->add('cp', TextType::class)
-            ->add('ville', textType::class)
+            ->add('adresse', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'],
+                ])
+            ->add('cp', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'],
+                ])
+            ->add('ville', textType::class, [
+                'attr' => [
+                    'class' => 'form-control'],
+                ])
+                ->add('valider', SubmitType::class, [
+                    'attr' => [
+                        'class' => 'btn btn-primary'],
+                ])
         ;
     }
 
